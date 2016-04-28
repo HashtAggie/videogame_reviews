@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+print "Seeding standard categories"
+
+Category.create( [
+  {name: "PC Games"}
+  {name: "Xbox Games"}
+  {name: "Nintendo Games"}
+  {name: "Playstation Games"}
+  ])
+
+  puts "seeded #{Category.count} categories"
