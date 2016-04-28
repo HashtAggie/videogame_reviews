@@ -7,10 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 print "Seeding standard categories"
 
-Category.create( [
-  {name: "PC Games"}
-  {name: "Xbox Games"}
-  {name: "Nintendo Games"}
+Category.create([
+  {name: "PC Games"},
+  {name: "Nintendo Games"},
   {name: "Playstation Games"}
   ])
 
