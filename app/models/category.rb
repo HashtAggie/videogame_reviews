@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
-  validates_presence_of :name
   has_many :games
+  validates_presence_of :name
 end
