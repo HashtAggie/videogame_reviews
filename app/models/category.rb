@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
-  validates_presence_of :name
   has_many :games
+  accepts_nested_attributes_for :games
+  validates_presence_of :name, :category_id
 end

@@ -5,4 +5,6 @@
 
 <h2>Pick your console</h2>
 
-<%= render@categories %>
+<% @categories.each do |category|  %>
+  <h3><%= link_to category.name, category%></h3>
+  <% end %>
