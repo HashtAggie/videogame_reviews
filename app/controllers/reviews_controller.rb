@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
 
   def index
-    @game = Game.find(params[:game_id])
-    @category = Category.find(params[:category_id])
+    @game = Game.find(params[:id])
+    @category = Category.find(params[:id])
     @reviews = Review.joins(game: :category).where(categories: {id: @category.id}, games: {id: @game.id})
 
     respond_to do |format|
@@ -12,8 +12,8 @@ class ReviewsController < ApplicationController
   end
 
     def show
-      @category = Category.find(params[:category_id])
-      @game = Game.find(params[:game_id])
+      @category = Category.find(params[:id])
+      @game = Game.find(params[:id])
       @review = @game.reviews.find(params[:id])
 
       respond_to do |format|
