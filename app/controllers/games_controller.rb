@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   before_filter :set_category
 
   def index
+    @category = Category.find(params[:category_id])
     @games = @category.games
 
     respond_to do |format|
@@ -11,7 +12,9 @@ class GamesController < ApplicationController
 end
 
   def show
+    @category = Category.find(params[:category_id])
     @game = @category.games.find(params[:id])
+    @review = @game.reviews.find(params[:id])
   end
 
   def create
