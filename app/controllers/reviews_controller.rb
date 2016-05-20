@@ -12,9 +12,9 @@ class ReviewsController < ApplicationController
   end
 
     def show
-      @category = Category.find(params[:id])
+      @category = Category.find(:category_id])
       @game = Game.find(params[:id])
-      @review = @game.reviews.find(params[:id])
+      @review = @game.review.find(params[:id])
 
       respond_to do |format|
         format.html
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
       @review.game = @game
 
       if @review.save
-        redirect_to game_review_path(@game, @review), notice: "Thanks for your review"
+        redirect_to game_review_path([@game, @review]), notice: "Thanks for your review"
       else
         render :new
       end
@@ -54,6 +54,10 @@ class ReviewsController < ApplicationController
     end
 
     protected
+    def review_params
+      params.require(:review).permit(:game_id, :comments)
+    end
+
     def set_game
         @game = Game.find(params[:game_id])
         @review = @game.reviews.find(params[:id])

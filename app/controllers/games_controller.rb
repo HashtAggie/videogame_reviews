@@ -1,9 +1,8 @@
 class GamesController < ApplicationController
-  before_filter :set_category
+  before_filter :set_game
 
   def index
-    @categories = Category.find(params[:id])
-    @games = @category.games.find(params[:id])
+    @games = Games.includes(:category).all
 
     respond_to do |format|
       format.html
@@ -12,8 +11,6 @@ class GamesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
-    @game = @category.games.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -34,8 +31,11 @@ class GamesController < ApplicationController
 
   protected
 
-  def set_category
-    @category = Category.find(params[:category_id])
-    @game = @category.games.find(params[:id])
-  end
+    def game_params
+      params.require(:game).permit(:title, :id, :category)
+    end
+
+    def set_game
+      @game = Game.find(params[:id])
+    end
 end

@@ -2,4 +2,6 @@
 
 <p>Check out all the <strong><%= @category.name %></strong> games below!</p>
 
-<l1><%= link_to @game category_game_path [@category, @game]%></li>
+<% @category.games.each do |game|%>
+<p><%= link_to game.title, game_path(game) %></p>
+<% end %>

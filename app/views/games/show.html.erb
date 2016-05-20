@@ -2,5 +2,6 @@
 
 <p>Read the reviews!</p>
 
-
-<% @review.game_id%>
+<% @game.reviews.each do |review| %>
+<%= review.comments %>
+<% end %>
