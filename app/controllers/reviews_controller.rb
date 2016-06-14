@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
   end
 
     def show
-      @category = Category.find(:category_id])
+      @category = Category.find(:category_id)
       @game = Game.find(params[:id])
       @review = @game.review.find(params[:id])
 
